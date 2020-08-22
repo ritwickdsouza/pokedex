@@ -22,7 +22,7 @@ def main():
 
 
 def all_pokemons():
-    with open('pokemon.csv') as csv_file:
+    with open('dataset/pokemon.csv') as csv_file:
         pokemons = csv.DictReader(csv_file)
         for pokemon in pokemons:
             pokemon['pokedex_number'] = int(pokemon['pokedex_number'])
