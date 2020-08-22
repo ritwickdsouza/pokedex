@@ -1,5 +1,22 @@
 version: '3'
 services:
+    flask-app:
+        build:
+            dockerfile: Dockerfile
+            context: .
+        container_name: flask-app
+        command: bash -c "flask run --host=0.0.0.0 --port=5000 && python pokedex/index_pokemons.py"
+        depends_on:
+          - elasticsearch
+        environment:
+            FLASK_APP: pokedex/run.py
+            ELASTICSEARCH_URL: http://elasticsearch:9200
+        networks:
+          - elastic
+        ports:
+        - 5000:5000
+        volumes:
+        - ./pokedex:/home/user/dataset
     elasticsearch:
         container_name: elasticsearch
         environment:
@@ -13,6 +30,8 @@ services:
             - data:/usr/share/elasticsearch/data
     kibana:
         container_name: kibana
+        depends_on:
+          - elasticsearch
         image: docker.elastic.co/kibana/kibana:7.9.0
         environment:
             ELASTICSEARCH_URL: http://elasticsearch:9200
@@ -28,4 +47,3 @@ volumes:
 networks:
   elastic:
     driver: bridge
-

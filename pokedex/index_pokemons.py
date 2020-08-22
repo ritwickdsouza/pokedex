@@ -3,12 +3,13 @@ import csv
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 
-from settings import DOC_TYPE
-from settings import INDEX_NAME
+from pokedex.settings import DOC_TYPE
+from pokedex.settings import ELASTICSEARCH_HOSTS
+from pokedex.settings import INDEX_NAME
 
 
 def main():
-    es = Elasticsearch()
+    es = Elasticsearch(ELASTICSEARCH_HOSTS)
 
     es.indices.delete(index=INDEX_NAME, ignore=404)
     es.indices.create(
@@ -22,7 +23,7 @@ def main():
 
 
 def all_pokemons():
-    with open('dataset/pokemon.csv') as csv_file:
+    with open('pokedex/dataset/pokemon.csv') as csv_file:
         pokemons = csv.DictReader(csv_file)
         for pokemon in pokemons:
             pokemon['pokedex_number'] = int(pokemon['pokedex_number'])

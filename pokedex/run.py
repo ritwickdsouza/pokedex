@@ -1,4 +1,4 @@
-from pokedex.app import app
+from pokedex.app.app import app
 
 
 def main():
@@ -7,4 +7,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
-from pokedex.search import search
+from pokedex.app.search import search
 
 app = Flask(__name__)
 

@@ -2,14 +2,15 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search
 
 from pokedex.settings import DOC_TYPE
+from pokedex.settings import ELASTICSEARCH_HOSTS
 from pokedex.settings import INDEX_NAME
 
 
 def search(term=None):
-    client = Elasticsearch()
+    client = Elasticsearch(ELASTICSEARCH_HOSTS)
     s = Search(using=client, index=INDEX_NAME, doc_type=DOC_TYPE)
     if not term:
-        # Show all pokemons on homepage and when no text is given
+        # Show all pokemons on homepage
         query = {
             'match_all': {}
         }
