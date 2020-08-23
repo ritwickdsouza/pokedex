@@ -2,7 +2,7 @@
 This is my attempt in using Elasticsearch to build a very simple search engine, what would be a better project than 
 building your own Pokédex.
 
-![Home](media/pokdex.png)
+![Home](media/pokedex.png)
 
 ### Dataset
 The dataset I used for the project was found on Kaggle (https://www.kaggle.com/rounakbanik/pokemon)  
@@ -17,7 +17,9 @@ Elasticsearch - http://127.0.0.1:9200
 Kibana - http://127.0.0.1:5601  
 
 ### Search Examples
-The search allows us to either search with english or japanese name of the pokemon  
+Search for pokemons with their English or Japanese name
 ![Search Example 1](media/search_example_1.png)
-You can also search for all pokemons of a given type   
+Search for all pokemons of a given type
 ![Search Example 2](media/search_example_2.png)
+Search for pokemons of a given classification
+![Search Example 2](media/search_example_3.png)

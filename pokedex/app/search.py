@@ -23,6 +23,7 @@ def search(term=None):
                 "fields": [
                     "doc.name",
                     "doc.japanese_name",
+                    "doc.classification",
                     "doc.type1",
                     "doc.type2"
                 ]
